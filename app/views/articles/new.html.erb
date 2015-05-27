@@ -2,16 +2,16 @@
 
 <%= form_for :article, url: articles_path do |f| %>
   <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.label :title %><br> <!-- nazwa pola -->
+    <%= f.text_field :title %> <!-- pole do wpisania -->
   </p>
  
   <p>
-    <%= f.label :text %><br>
-    <%= f.text_area :text %>
+    <%= f.label :text %><br> <!-- nazwa pola -->
+    <%= f.text_area :text %> <!-- obszar do wpisania -->
   </p>
  
   <p>
-    <%= f.submit %>
+    <%= f.submit %> <!-- przycisk potwierdzajacy -->
   </p>
 <% end %>
