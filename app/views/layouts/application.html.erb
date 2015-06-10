@@ -8,6 +8,23 @@
 </head>
 <body>
 
+ <% flash.each do |key, value| %>
+ <div class="alert alert-<%= key %>"><%= value %></div>
+ <% end %>
+
+
+<% if user_signed_in? %>
+  <div>
+    Jestes zalogowany jako <strong><%= current_user.email %></strong>
+    <%= link_to 'Wyloguj', destroy_user_session_path,method: :delete %>
+  </div>
+<% else %>
+  <%= link_to 'Zaloguj się!',new_user_session_path %>
+<% end %>
+
+  
+  
+  
 <%= yield %>
 
 </body>
