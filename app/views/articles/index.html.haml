@@ -1,0 +1,28 @@
+%h1 Articles
+%div
+  = link_to "New article", new_article_path
+%br/
+%table
+  - if user_signed_in?
+    %div
+      Jestes zalogowany jako:
+      %strong
+        = current_user.email
+      = link_to "Wyloguj", destroy_user_session_path, method: :delete
+  - else
+    = link_to "Zaloguj", new_user_session_path
+  %thead
+    %tr
+      %th Tytul
+      %th Akcje
+  %tbody
+    - @articles.each do |article|
+      %tr
+        %td= article.title
+        - if can? :show, @article
+          %td
+            = link_to 'Show', article_path(article)
+            - if can? :edit, @article
+              %td= link_to 'Edit', edit_article_path(article)
+            - if can? :destroy, @article
+              %td= link_to 'Destroy', article_path(article),method: :delete,data: { confirm: 'Are you sure?' }

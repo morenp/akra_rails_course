@@ -3,6 +3,8 @@ class ArticlesController < ApplicationController
   #http_basic_authenticate_with name: "dhh", password: "secrety", except: [:index, :show]
   before_action :authenticate_user!, except: :index
   
+  load_and_authorize_resource
+  
   def index
     @articles = Article.all
   end
@@ -30,6 +32,8 @@ class ArticlesController < ApplicationController
   end
  
   def update
+    
+    
     @article = Article.find(params[:id])
  
     if @article.update(article_params)
